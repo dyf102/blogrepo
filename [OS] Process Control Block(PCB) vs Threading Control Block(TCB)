@@ -91,3 +91,27 @@ struct task_struct {
 };
 
 ```
+
+#Memory Descriptor 
+ The kernel represents a <strong>process's address space </strong>.
+ 
+```C
+struct mm_struct {
+	/* reference counter */
+	int count;
+	/* Page global memory */	
+	pgd_t * pgd;	
+	unsigned long context;
+	unsigned long start_code, end_code, start_data, end_data;
+	unsigned long start_brk, brk, start_stack, start_mmap;
+	unsigned long arg_start, arg_end, env_start, env_end;
+	/* rss:allocated page, total_vm: total # of page, locked_vm: # of locked vm */
+	unsigned long rss, total_vm, locked_vm;
+	unsigned long def_flags;
+	/* list of memory areas */
+	struct vm_area_struct * mmap;
+	/* avl tree or rb tree*/
+	struct vm_area_struct * mmap_avl; 
+	struct semaphore mmap_sem;
+};
+```
