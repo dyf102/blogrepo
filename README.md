@@ -1,2 +1,0 @@
-# blogrepo
-The personal blog

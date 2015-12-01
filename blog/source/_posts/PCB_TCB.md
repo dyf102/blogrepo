@@ -1,5 +1,6 @@
-# [OS] Process Control Block(PCB) vs Threading Control Block(TCB)
-
+title: "[OS] Process Control Block(PCB) vs Threading Control Block(TCB)"
+date: 2015-11-24 13:28:06
+---
 ## PCB
 PCB contains process id, process group id, parent id, process, the child process, the heap pointer, program counter, schedule state(running, ready, blocked), permission, content of general purpose registers, and opened files.
 ## TCB
