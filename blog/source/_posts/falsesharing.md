@@ -1,3 +1,7 @@
+title: False Sharing
+date: 2016-05-10 21:30:20
+tags: Optimization, Cahce
+---
 # How to Avoid False Sharing
 
 ### What is false sharing?
@@ -66,15 +70,22 @@ We can see the two threads is slower than the sequential version. The reason is 
 __attribute__((__aligned__(NUM_BYTE)))
 ``` 
 to the end of declaration. For example
-```
+```C++
 struct data {
 unsigned long long x;
 int padding __attribute__((__aligned__(64)));
 unsigned long long y;
 };	
 ```
+
 Or we can add
 ```
-int padding[12]; // 12 * 4 bytes
+int padding[21]; // 21 * 4 bytes
 ```
 #### But too large padding will lead waste of cache.
+For JVM, there is the same problem, this can handle the cache less than 64 bytes. Each long is 8 bytes in JVM
+```java
+public long p1, p2, p3, p4, p5, p6, p7; // cache line padding
+    private volatile long cursor = INITIAL_CURSOR_VALUE;
+    public long p8, p9, p10, p11, p12, p13, p14; // cache line padding
+```
