@@ -66,11 +66,12 @@ We can see the two threads is slower than the sequential version. The reason is 
 ------
 1.	keep thread-local copy and make multiple update on it and save it to global only once.
 2. Add padding to the global varibla. For gcc/Clang, we can add
+...
 ```
 __attribute__((__aligned__(NUM_BYTE)))
-``` 
-to the end of declaration. For example
-```C++
+```
+...to the end of declaration. For example
+```
 struct data {
 unsigned long long x;
 int padding __attribute__((__aligned__(64)));
@@ -80,7 +81,7 @@ unsigned long long y;
 
 Or we can add
 ```
-int padding[21]; // 21 * 4 bytes
+int padding[16]; // 16 * 4 bytes
 ```
 #### But too large padding will lead waste of cache.
 For JVM, there is the same problem, this can handle the cache less than 64 bytes. Each long is 8 bytes in JVM
