@@ -79,5 +79,45 @@ int ladderLength(string start, string end, unordered_set<string> &dict) {
     }
     return bfs(matrix, startPos, endPos, n);
 }
-
-```  
+Why shell we change the way to search
+```
+```c++
+// reference code from http://www.jiuzhang.com/solutions/word-ladder/
+int ladderLength(string start, string end, unordered_set<string> &dict) {
+    // write your code here
+    if(start == end){
+        return 1;
+    }
+    queue<string> Q;
+    Q.push(start);
+    dict.erase(start);
+    int len = 2;
+    while(!Q.empty()){
+        int n = Q.size();
+        for(int i = 0; i < n;i ++){
+            string curr = Q.front();
+            Q.pop();
+            for(int j = 0; j < curr.size(); j ++){
+                char pre = curr[j];
+                // change the character to search
+                for(char c = 'a'; c <= 'z';c++){
+                    if(c == pre) continue;
+                    curr[j] = c;
+                    if(curr == end){
+                        return len;
+                    }
+                    // O(1) to check
+                    auto result = dict.find(curr);
+                    if(result != dict.end()){
+                        Q.push(*result);
+                        dict.erase(curr);
+                    }
+                }
+                curr[j] = pre; // change back
+            }
+        }
+        len ++;
+    }
+    return 0;
+}
+```
