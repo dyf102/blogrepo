@@ -11,10 +11,10 @@ why is it single thread?
 Why does it use event loop?
 1. Minimiza the cost of switching between task.
 2. Try to deal with task as much as possible.
-What is event loop?
+What is #event loop#?
 A list of task. It uses Epoll or Kqueue to moniter the statue of file descripter in kernal space. When successful, epoll_wait will return number of fd ready for read or write I/O, or zero if no df ready during the timeout period.
 
-````c
+```c++
 static int aeApiPoll(aeEventLoop *eventLoop, struct timeval *tvp) {
     aeApiState *state = eventLoop->apidata;
     int retval, numevents = 0;
@@ -73,7 +73,7 @@ How to be fast?
 Some Datastructure in redis
 1.	list: double-linked list
 adlist.h
-```c
+```c++
 typedef struct listNode {
     struct listNode *prev;
     struct listNode *next;
@@ -95,7 +95,8 @@ typedef struct list {
 } list;
 ```
 2.	skip-list: data stucture enables fast search in ordered linked list. It achives O(log(n)) search and delete.
-![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Skip_list_add_element-en.gif/500px-Skip_list_add_element-en.gif "Skip list")
+![Insert new node](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Skip_list_add_element-en.gif/500px-Skip_list_add_element-en.gif "Skip list")
+
 
 Redis' implementation can be found 
 https://github.com/antirez/redis/blob/unstable/src/t_zset.c
