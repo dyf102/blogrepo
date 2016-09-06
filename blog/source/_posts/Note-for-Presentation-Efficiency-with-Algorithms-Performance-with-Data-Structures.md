@@ -17,9 +17,10 @@ Save battery, reduce energy consumption, reduce cost
 ####C++ does not give you performance, but the control of the performance
 Efficiency through Algorithms
 Example: sub-string search
-	1. N^2 algorithm
-	2. KMP(skip-table)
-	3. Boyer-moore 
+
+1. N^2 algorithm
+2. [KMP](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm)(skip-table)
+3. [Boyer-moore](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string_search_algorithm) 
 To finish the task, use less work.
 
 Always do less work
@@ -48,7 +49,7 @@ Performance through Data structure
 1. Just not use linked list
 Issue: the cost of cache miss. 100 times more acess time than retrive from L1 or l2 cache.
 std:: LIST 
-each step is a cache miss
+Each step is a cache miss since next node is retrived by pointer.
 Only use in the very rarely travese the list, but very frequently update.
 
 ---
@@ -63,6 +64,7 @@ These bucket are linked list
 Essentially have some pointer chasing
 
 A good hash table design
+
 1.	No bucket, just open addressing
 2. table stored as contiguous range of memory
 3. use local probing on collisions to find an open slot in the same cache line
