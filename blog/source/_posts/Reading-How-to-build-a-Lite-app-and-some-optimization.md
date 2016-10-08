@@ -12,11 +12,12 @@ The architecture:
 ![Architecture](https://scontent.xx.fbcdn.net/t39.2365-6/12504175_1685387308400777_1475859244_n.png "Architecture")
 
 To reduce the APK size, the client side does not have any production code, instead it contains only a simple VM and a rendering engine to Android UI. 
-The production code is written on the server side. The server fetches data from backend server. 
+The production code is written on the server side. The server fetches data from backend server.
+This means we have a thin client side and the Lite Server will have more computation and I/O responsibility. 
 
 ## How to Achieve 
 1.	Small APK 
-	The client is a geneic VM and production code is one server.Elements,like strings and PNG resources are sent form the server on demand and cached rather than built from APK. Use Unicon Symbol instead of Icon.
+	The client is a generic VM and production code is one server.Elements,like strings and PNG resources are sent form the server on demand and cached rather than built from APK. The server will send the compressed elements tree, which is similar to DOM. It uses Unicon Symbol instead of Icon.
 
 2.	Slow connection and data efficiency
 	-	Over TCP instead of HTTPS
