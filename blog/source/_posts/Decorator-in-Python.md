@@ -66,7 +66,7 @@ The output is:
 with_logging
 
 We need the printHello instead. It is because from printHello in fact we get the function with_logging. we get decorated function called only bacause decorator function return the the original function. How to solve it?
-we can use ```functools.wraps``` and change the function like this
+we can use the library ***functools.wraps*** and change the function like this
 
 ```
 def logged(func):
@@ -82,7 +82,6 @@ The wraps is also a decorator and it will keep the ```__module__, __name__, __do
 ```python
 # update_wrapper() and wraps() are tools to help write
 # wrapper functions that can handle naive introspection
-
 WRAPPER_ASSIGNMENTS = ('__module__', '__name__', '__doc__')
 WRAPPER_UPDATES = ('__dict__',)
 def update_wrapper(wrapper,
@@ -108,5 +107,5 @@ def update_wrapper(wrapper,
     return wrapper
 ```
 
-It use setattr and getattr to update the attribute informtion from wrapped function to wrapper function.
+It uses setattr and getattr function to update the attribute informtion from wrapped function to wrapper function. 
 
