@@ -68,15 +68,16 @@ with_logging
 We need the printHello instead. It is because from printHello in fact we get the function with_logging. we get decorated function called only bacause decorator function return the the original function. How to solve it?
 we can use the library ***functools.wraps*** and change the function like this
 
-```
+```python
 def logged(func):
 	@wraps(func)
-    def with_logging(*args, **kwargs):
-        print func.__name__ + " was called"
-        return func(*args, **kwargs)
-    return with_logging
+	def with_logging(*args, **kwargs):
+		print func.__name__ + " was called"
+		return func(*args, **kwargs)
+	return with_logging
 ```
-The wraps is also a decorator and it will keep the ```__module__, __name__, __doc__``` information for wrapped function. How does python do that?
+
+The wraps is also a decorator and it will keep the \__module\__, \__name\__, \__doc\__ information for wrapped function. How does python do that?
 [https://hg.python.org/cpython/file/2.7/Lib/functools.py](https://hg.python.org/cpython/file/2.7/Lib/functools.py)
 
 ```python
