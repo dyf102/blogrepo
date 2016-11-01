@@ -3,30 +3,28 @@ title: Interview Summary
 date: 2016-10-31 15:18:18
 tags: interview, 中文
 ---
-## Programming Language
+##  Programming Language
 C++
 
 1.	什么是虚函数 
 当从父类继承的时候，虚函数和被继承的函数有相同的签名，但在运行过程中，会自动的选择适当的具体实现运行。虚函数是面向对象编程实现多态的具体手段。
 2.	Static 静态变量和静态函数
-	静态变量：
-		作用域：
-			全局变量：文件内访问
+静态变量：
+		作用域：全局变量：文件内访问
 		函数内变量： 函数内访问
 		类内变量：可以通过类或者实例访问
 		生命周期：文件内
 	静态函数：
 		只能在同一个翻译单元内访问
 		目的：隔离函数，防止被其他编译单元调用
-			 解决同名函数，在不同编译单元
+		解决同名函数，在不同编译单元
 3. Inline 函数内链
-	优点：
-		1.	减小函数调用的开销，参数拷贝pop,push stack，返回值的拷贝 
-		2.	增加函数指令访问的局部局部性
-		3.	放入头文件里
-	缺点：
-		1.	增加执行文件的大小
-		2.	改变内连函数，其他文件需要重新编译
+优点：1.	减小函数调用的开销，参数拷贝pop,push stack，返回值的拷贝 	
+	2.	增加函数指令访问的局部局部性
+	3.	放入头文件里	
+
+缺点:1.		增加执行文件的大小
+		2.改变内连函数，其他文件需要重新编译
 
 JAVA
 
@@ -38,8 +36,8 @@ JAVA
 5. Colloection.sort 为什么用merge sort 作为排序object
 6. Java GC
 	引用计数的缺点：
-		1.	只保存了引用的数量但是没有存引用他的对象，问题循环引用
-		2.	增减开销
+	1.	只保存了引用的数量但是没有存引用他的对象，问题循环引用
+	2.	增减开销
 	mark-sweep:标记清除: 两个阶段
 	发生条件：所有线程到达安全点，不在分配内存。
 	标记阶段：从跟节点标记所有能够达到的节点，
@@ -87,9 +85,12 @@ client side:
 int connect(int s, const struct sockaddr *name, socklen_t namelen);
 while ((bytes = read(s, buffer, BUFSIZ)) > 0)
     write(1, buffer, bytes);
+```
 ---
 Server side:
 绑定端口
+
+```c
 int bind(int s, const struct sockaddr *addr, socklen_t addrlen);
 
 int listen(int s, int backlog); //blacklog: maximum size of the queue of pending connections.
