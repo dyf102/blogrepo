@@ -1,16 +1,18 @@
 layout: blog
 title: Intro. Distributed Storage
 date: 2016-11-29 13:53:00
-tags:
+tags: Distributed Storage System
 ---
+## Ceph
 Ceph is a Distributed storage system
 
-### Overview
-MDS  meta data server
-ODS  Object Data server
-MON   Monitor
+#### Overview
+| Component    |      |
+| :------------- | :------------- |
+| MDS            | meta data server|
+| ODS            | Object Data server|
+| MON            | Monitor        |
 - Decouple Data and metadata
-
 - Dynamic:
 Metadata is split among cluster of servers
 • Distribution of metadata changes with the
@@ -32,10 +34,9 @@ decision making to the many data servers
 control of the cluster (single point of
 failure)
 
-Hive
+##Hive
 
-### Overview
-
+#### Overview
 HQL, a variant of SQL
 Translate queries into mapreduce job
 
@@ -48,9 +49,9 @@ HDFS, metadata)
 • Metastore: schema, location in HDFS, et
 
 
-Swift
+## Swift
 
-###Overview
+#### Overview
 An object Storage
 
 Use Case:
@@ -69,27 +70,30 @@ Goals:
 2.  High availability
 
 
-Amazon AWS EBS
+## Amazon AWS EBS
 
-###Overview
+#### Overview
 highly available and Reliable
 required quickly accessible and long-term persistence
 encryption
 up tp 16 table
 
-Amazon AWS Glacier
+## Amazon AWS Glacier
 
-### Overview
-
-archive you data with very low cost
+#### Overview
+Archive you data with very low cost
 Single file archive up to 40 table
+Need time to prepare the download
 
-Amazon EFS
+## Amazon EFS - Elastic File system
 
-Elastic File system
+#### Overview
 
-### Overview
+* SSD backend
+* highly available and highly durable
+* Grow or shrink as needed
+* EFS can attach one or more of EC2 instances
 
-SSD backend
-highly available and highly durable
-Grow or shrink as needed
+Two performance modes:
+1.  General Purpose. Not suitable for hundreds or thousands of Ec2 instances access the file system concurrently.
+2.  Max I/O Optimize for higher level of aggregate throughput per second, but higher latency for file system.
