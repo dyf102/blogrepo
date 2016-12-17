@@ -3,7 +3,8 @@ title: Decorator in Python
 date: 2016-10-03 22:17:28
 tags: Python, Design Pattarn
 ---
-I used to use Flask as my CMPUT 410 Distributed Social Network framework. There is an example from flask.
+Decorator is a structure design pattern, which is also known as wrapper.
+I used to use Flask as my CMPUT 410 [Distributed Social Network framework](https://github.com/frankdede/CMPUT466Project). There is an example from flask.
 
 ```python
 @app.route('/<aid>', methods=['GET', 'POST'])
@@ -11,7 +12,6 @@ def author_view(aid):
     """
     View the main page
     """
-
     if 'logged_in' in session and aid ==session['logged_id']:
         username = session['logged_in']
         msgCount = reController.getRequestCountByAid(aid)
